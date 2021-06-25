@@ -87,9 +87,9 @@ export const AdminRoom: React.FC = () => {
                   isAnswered={question.isAnswered}
                   isHighlighted={question.isHighlighted}
                 >
-                  <span>{question.likeCount}</span>
                   {!question.isAnswered && (
                     <>
+                      <span>{question.likeCount}</span>
                       <button
                         type="button"
                         onClick={() =>

@@ -141,7 +141,8 @@ export const Room: React.FC = () => {
 
         <div className="question-list">
           {questions
-            ?.sort((b, a) => a.likeCount - b.likeCount)
+            ?.filter((question) => question.likeCount >= 0)
+            .sort((b, a) => a.likeCount - b.likeCount)
             .map((question) => {
               return (
                 <Question
@@ -153,6 +154,7 @@ export const Room: React.FC = () => {
                 >
                   {!question.isAnswered && (
                     <>
+                      <span>{question.likeCount}</span>
                       <button
                         className={`like-button ${
                           question.likeId ? 'liked' : ''
@@ -167,7 +169,6 @@ export const Room: React.FC = () => {
                           )
                         }
                       >
-                        <span>{question.likeCount}</span>
                         <svg
                           width="24"
                           height="24"
