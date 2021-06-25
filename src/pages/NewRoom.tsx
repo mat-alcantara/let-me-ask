@@ -1,4 +1,5 @@
-import { FormEvent, useState } from 'react';
+import React, { FormEvent, useState } from 'react';
+
 import { Link, useHistory } from 'react-router-dom';
 
 import { database } from '../services/firebase';
@@ -12,7 +13,7 @@ import { useAuth } from '../hooks/useAuth';
 
 import '../styles/auth.scss';
 
-export function NewRoom() {
+export const NewRoom: React.FC = () => {
   const { user } = useAuth();
   const history = useHistory();
 
@@ -65,4 +66,4 @@ export function NewRoom() {
       </main>
     </div>
   );
-}
+};

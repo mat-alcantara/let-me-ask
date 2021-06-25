@@ -1,4 +1,5 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
+
 import cx from 'classnames';
 
 import './styles.scss';
@@ -14,13 +15,13 @@ type QuestionProps = {
   isHighlighted?: boolean;
 };
 
-export function Question({
+export const Question: React.FC<QuestionProps> = ({
   content,
   author,
   isAnswered = false,
   isHighlighted = false,
   children,
-}: QuestionProps) {
+}) => {
   return (
     <div
       className={cx(
@@ -39,4 +40,4 @@ export function Question({
       </footer>
     </div>
   );
-}
+};

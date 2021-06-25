@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { useHistory, useParams } from 'react-router-dom';
 
 import logoImg from '../assets/logo.svg';
@@ -17,8 +19,7 @@ type RoomParams = {
   id: string;
 };
 
-export function AdminRoom() {
-  // const { user } = useAuth();
+export const AdminRoom: React.FC = () => {
   const history = useHistory();
   const params = useParams<RoomParams>();
   const roomId = params.id;
@@ -34,6 +35,7 @@ export function AdminRoom() {
   }
 
   async function handleDeleteQuestion(questionId: string) {
+    // eslint-disable-next-line no-alert
     if (window.confirm('Tem certeza que você deseja excluir esta pergunta?')) {
       await database.ref(`rooms/${roomId}/questions/${questionId}`).remove();
     }
@@ -115,4 +117,4 @@ export function AdminRoom() {
       </main>
     </div>
   );
-}
+};

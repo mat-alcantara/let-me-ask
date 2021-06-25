@@ -1,4 +1,5 @@
-import { createContext, ReactNode, useEffect, useState } from 'react';
+import React, { createContext, ReactNode, useEffect, useState } from 'react';
+
 import { auth, firebase } from '../services/firebase';
 
 type User = {
@@ -18,10 +19,13 @@ type AuthContextProviderProps = {
 
 export const AuthContext = createContext({} as AuthContextType);
 
-export function AuthContextProvider(props: AuthContextProviderProps) {
+export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
+  children,
+}) => {
   const [user, setUser] = useState<User>();
 
   useEffect(() => {
+    // eslint-disable-next-line no-shadow
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         const { displayName, photoURL, uid } = user;
@@ -65,7 +69,7 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
 
   return (
     <AuthContext.Provider value={{ user, signInWithGoogle }}>
-      {props.children}
+      {children}
     </AuthContext.Provider>
   );
-}
+};

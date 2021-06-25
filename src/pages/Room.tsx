@@ -1,4 +1,5 @@
-import { FormEvent, useState } from 'react';
+import React, { FormEvent, useState } from 'react';
+
 import { useParams } from 'react-router-dom';
 
 import logoImg from '../assets/logo.svg';
@@ -16,7 +17,7 @@ type RoomParams = {
   id: string;
 };
 
-export function Room() {
+export const Room: React.FC = () => {
   const { user } = useAuth();
   const params = useParams<RoomParams>();
   const [newQuestion, setNewQuestion] = useState('');
@@ -97,7 +98,8 @@ export function Room() {
               </div>
             ) : (
               <span>
-                Para enviar uma pergunta, <button>faça seu login</button>.
+                Para enviar uma pergunta,{' '}
+                <button type="button">faça seu login</button>.
               </span>
             )}
             <Button type="submit" disabled={!user}>
@@ -152,4 +154,4 @@ export function Room() {
       </main>
     </div>
   );
-}
+};

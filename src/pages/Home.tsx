@@ -1,3 +1,5 @@
+import React, { FormEvent, useState } from 'react';
+
 import { useHistory } from 'react-router-dom';
 
 import illustrationImg from '../assets/illustration.svg';
@@ -8,10 +10,10 @@ import { Button } from '../components/Button';
 import { useAuth } from '../hooks/useAuth';
 
 import '../styles/auth.scss';
-import { FormEvent, useState } from 'react';
+
 import { database } from '../services/firebase';
 
-export function Home() {
+export const Home: React.FC = () => {
   const history = useHistory();
   const { user, signInWithGoogle } = useAuth();
 
@@ -35,6 +37,7 @@ export function Home() {
     const roomRef = await database.ref(`rooms/${roomCode}`).get();
 
     if (!roomRef.exists()) {
+      // eslint-disable-next-line no-alert
       alert('Room does not exists');
       return;
     }
@@ -55,7 +58,11 @@ export function Home() {
       <main>
         <div className="main-content">
           <img src={logoImg} alt="Letmeask" />
-          <button onClick={handleCreateRoom} className="create-room">
+          <button
+            type="button"
+            onClick={handleCreateRoom}
+            className="create-room"
+          >
             <img src={googleIconImg} alt="Logo do Google" />
             Crie sua sala com o Google
           </button>
@@ -73,4 +80,4 @@ export function Home() {
       </main>
     </div>
   );
-}
+};
