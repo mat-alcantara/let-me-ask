@@ -1,17 +1,17 @@
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams } from 'react-router-dom';
 
-import logoImg from "../assets/logo.svg";
-import deleteImg from "../assets/delete.svg";
-import checkImg from "../assets/check.svg";
-import answerImg from "../assets/answer.svg";
+import logoImg from '../assets/logo.svg';
+import deleteImg from '../assets/delete.svg';
+import checkImg from '../assets/check.svg';
+import answerImg from '../assets/answer.svg';
 
-import { Button } from "../components/Button";
-import { Question } from "../components/Question";
-import { RoomCode } from "../components/RoomCode";
-import { useRoom } from "../hooks/useRoom";
-import { database } from "../services/firebase";
+import { Button } from '../components/Button';
+import { Question } from '../components/Question';
+import { RoomCode } from '../components/RoomCode';
+import { useRoom } from '../hooks/useRoom';
+import { database } from '../services/firebase';
 
-import "../styles/room.scss";
+import '../styles/room.scss';
 
 type RoomParams = {
   id: string;
@@ -30,11 +30,11 @@ export function AdminRoom() {
       endedAt: new Date(),
     });
 
-    history.push("/");
+    history.push('/');
   }
 
   async function handleDeleteQuestion(questionId: string) {
-    if (window.confirm("Tem certeza que você deseja excluir esta pergunta?")) {
+    if (window.confirm('Tem certeza que você deseja excluir esta pergunta?')) {
       await database.ref(`rooms/${roomId}/questions/${questionId}`).remove();
     }
   }
