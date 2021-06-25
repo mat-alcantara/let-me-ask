@@ -72,6 +72,14 @@
             stroke: #835afd;
           }
         }
+
+        &.desliked {
+          color: #ff0000;
+
+          svg path {
+            stroke: #ff0000;
+          }
+        }
       }
 
       &:hover {

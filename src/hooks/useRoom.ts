@@ -39,8 +39,8 @@ type QuestionType = {
   isAnswered: boolean;
   isHighlighted: boolean;
   likeCount: number;
-  deslikeCount: number;
   likeId: string | undefined;
+  deslikeId: string | undefined;
 };
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
@@ -68,7 +68,6 @@ export const useRoom = (roomId: string) => {
             likeCount:
               Object.values(value.likes ?? {}).length -
               Object.values(value.deslikes ?? {}).length,
-            deslikeCount: Object.values(value.deslikes ?? {}).length,
             likeId: Object.entries(value.likes ?? {}).find(
               // eslint-disable-next-line no-shadow
               ([key, like]) => like.authorId === user?.id,

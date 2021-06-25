@@ -54,10 +54,39 @@ export const Room: React.FC = () => {
   async function handleLikeQuestion(
     questionId: string,
     likeId: string | undefined,
+    deslikeId: string | undefined,
+  ) {
+    if (deslikeId) {
+      await database
+        .ref(`rooms/${roomId}/questions/${questionId}/likes/${deslikeId}`)
+        .remove();
+    }
+
+    if (likeId) {
+      await database
+        .ref(`rooms/${roomId}/questions/${questionId}/likes/${likeId}`)
+        .remove();
+    } else {
+      await database.ref(`rooms/${roomId}/questions/${questionId}/likes`).push({
+        authorId: user?.id,
+      });
+    }
+  }
+
+  async function handleDeslikeQuestion(
+    questionId: string,
+    likeId: string | undefined,
+    deslikeId: string | undefined,
   ) {
     if (likeId) {
       await database
         .ref(`rooms/${roomId}/questions/${questionId}/likes/${likeId}`)
+        .remove();
+    }
+
+    if (deslikeId) {
+      await database
+        .ref(`rooms/${roomId}/questions/${questionId}/likes/${deslikeId}`)
         .remove();
     } else {
       await database.ref(`rooms/${roomId}/questions/${questionId}/likes`).push({
@@ -127,7 +156,11 @@ export const Room: React.FC = () => {
                       type="button"
                       aria-label="Marcar como gostei"
                       onClick={() =>
-                        handleLikeQuestion(question.id, question.likeId)
+                        handleLikeQuestion(
+                          question.id,
+                          question.likeId,
+                          question.deslikeId,
+                        )
                       }
                     >
                       {question.likeCount > 0 && (
@@ -151,12 +184,16 @@ export const Room: React.FC = () => {
                     </button>
                     <button
                       className={`like-button ${
-                        question.likeId ? 'liked' : ''
+                        question.deslikeId ? 'desliked' : ''
                       }`}
                       type="button"
-                      aria-label="Marcar como gostei"
+                      aria-label="Marcar como não gostei"
                       onClick={() =>
-                        handleLikeQuestion(question.id, question.likeId)
+                        handleLikeQuestion(
+                          question.id,
+                          question.likeId,
+                          question.deslikeId,
+                        )
                       }
                     >
                       <svg
