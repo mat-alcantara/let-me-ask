@@ -13,7 +13,7 @@ import { RoomCode } from '../../components/RoomCode';
 import { useRoom } from '../../hooks/useRoom';
 import { database } from '../../services/firebase';
 
-import { Container, Content, RoomTitle } from './styles';
+import { Container, Content, RoomTitle, Separator } from './styles';
 
 type RoomParams = {
   id: string;
@@ -125,6 +125,7 @@ export const AdminRoom: React.FC = () => {
               );
             })}
         </div>
+        <Separator>Respostas colapsadas</Separator>
       </main>
     </Container>
   );
