@@ -77,7 +77,8 @@ export const AdminRoom: React.FC = () => {
 
         <div className="question-list">
           {questions
-            ?.sort((b, a) => a.likeCount - b.likeCount)
+            ?.filter((question) => question.likeCount >= 0)
+            .sort((b, a) => a.likeCount - b.likeCount)
             .sort((b, a) => Number(b.isAnswered) - Number(a.isAnswered))
             .map((question) => {
               return (
@@ -127,6 +128,28 @@ export const AdminRoom: React.FC = () => {
             })}
         </div>
         <Separator>Respostas colapsadas</Separator>
+        <div className="question-list">
+          {questions
+            ?.filter((question) => question.likeCount < 0)
+            .map((question) => {
+              return (
+                <Question
+                  key={question.id}
+                  content={question.content}
+                  author={question.author}
+                  isAnswered={question.isAnswered}
+                  isHighlighted={question.isHighlighted}
+                >
+                  <button
+                    type="button"
+                    onClick={() => handleDeleteQuestion(question.id)}
+                  >
+                    <img src={deleteImg} alt="Remover pergunta" />
+                  </button>
+                </Question>
+              );
+            })}
+        </div>
       </main>
     </Container>
   );
