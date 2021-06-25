@@ -58,7 +58,7 @@ export const Room: React.FC = () => {
   ) {
     if (deslikeId) {
       await database
-        .ref(`rooms/${roomId}/questions/${questionId}/likes/${deslikeId}`)
+        .ref(`rooms/${roomId}/questions/${questionId}/deslikes/${deslikeId}`)
         .remove();
     }
 
@@ -86,12 +86,14 @@ export const Room: React.FC = () => {
 
     if (deslikeId) {
       await database
-        .ref(`rooms/${roomId}/questions/${questionId}/likes/${deslikeId}`)
+        .ref(`rooms/${roomId}/questions/${questionId}/deslikes/${deslikeId}`)
         .remove();
     } else {
-      await database.ref(`rooms/${roomId}/questions/${questionId}/likes`).push({
-        authorId: user?.id,
-      });
+      await database
+        .ref(`rooms/${roomId}/questions/${questionId}/deslikes`)
+        .push({
+          authorId: user?.id,
+        });
     }
   }
 
@@ -189,7 +191,7 @@ export const Room: React.FC = () => {
                       type="button"
                       aria-label="Marcar como não gostei"
                       onClick={() =>
-                        handleLikeQuestion(
+                        handleDeslikeQuestion(
                           question.id,
                           question.likeId,
                           question.deslikeId,
