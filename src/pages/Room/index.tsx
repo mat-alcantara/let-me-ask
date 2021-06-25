@@ -141,7 +141,7 @@ export const Room: React.FC = () => {
 
         <div className="question-list">
           {questions
-            ?.filter((question) => question.likeCount >= 0)
+            ?.filter((question) => question.likeCount >= -1)
             .sort((b, a) => a.likeCount - b.likeCount)
             .map((question) => {
               return (
