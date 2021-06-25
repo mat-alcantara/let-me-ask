@@ -20,6 +20,12 @@ type FirebaseQuestions = Record<
         authorId: string;
       }
     >;
+    deslikes: Record<
+      string,
+      {
+        authorId: string;
+      }
+    >;
   }
 >;
 
@@ -33,6 +39,7 @@ type QuestionType = {
   isAnswered: boolean;
   isHighlighted: boolean;
   likeCount: number;
+  deslikeCount: number;
   likeId: string | undefined;
 };
 
@@ -59,6 +66,7 @@ export const useRoom = (roomId: string) => {
             isHighlighted: value.isHighlighted,
             isAnswered: value.isAnswered,
             likeCount: Object.values(value.likes ?? {}).length,
+            deslikeCount: Object.values(value.deslikes ?? {}).length,
             likeId: Object.entries(value.likes ?? {}).find(
               // eslint-disable-next-line no-shadow
               ([key, like]) => like.authorId === user?.id,
