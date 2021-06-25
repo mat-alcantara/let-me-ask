@@ -1,4 +1,4 @@
-# Alscript Blog
+# Let me Ask
 
 Let me Ask is an App developed in Next Level Week Bootcamp by Rocketseat. I added some features to the original project like the use of styled-components, eslint, prettier and changed the structure of the Auth hook.
 
