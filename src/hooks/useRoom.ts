@@ -71,6 +71,10 @@ export const useRoom = (roomId: string) => {
               // eslint-disable-next-line no-shadow
               ([key, like]) => like.authorId === user?.id,
             )?.[0],
+            deslikeId: Object.entries(value.deslikes ?? {}).find(
+              // eslint-disable-next-line no-shadow
+              ([key, deslike]) => deslike.authorId === user?.id,
+            )?.[0],
           };
         },
       );
