@@ -2,18 +2,18 @@ import React from 'react';
 
 import { useHistory, useParams } from 'react-router-dom';
 
-import logoImg from '../assets/logo.svg';
-import deleteImg from '../assets/delete.svg';
-import checkImg from '../assets/check.svg';
-import answerImg from '../assets/answer.svg';
+import logoImg from '../../assets/logo.svg';
+import deleteImg from '../../assets/delete.svg';
+import checkImg from '../../assets/check.svg';
+import answerImg from '../../assets/answer.svg';
 
-import { Button } from '../components/Button';
-import { Question } from '../components/Question';
-import { RoomCode } from '../components/RoomCode';
-import { useRoom } from '../hooks/useRoom';
-import { database } from '../services/firebase';
+import { Button } from '../../components/Button';
+import { Question } from '../../components/Question';
+import { RoomCode } from '../../components/RoomCode';
+import { useRoom } from '../../hooks/useRoom';
+import { database } from '../../services/firebase';
 
-import '../styles/room.scss';
+import { Container, Content, RoomTitle } from './styles';
 
 type RoomParams = {
   id: string;
@@ -54,9 +54,9 @@ export const AdminRoom: React.FC = () => {
   }
 
   return (
-    <div id="page-room">
+    <Container>
       <header>
-        <div className="content">
+        <Content>
           <img src={logoImg} alt="Letmeask" />
           <div>
             <RoomCode code={roomId} />
@@ -64,16 +64,16 @@ export const AdminRoom: React.FC = () => {
               Encerrar sala
             </Button>
           </div>
-        </div>
+        </Content>
       </header>
 
       <main>
-        <div className="room-title">
+        <RoomTitle>
           <h1>Sala {title}</h1>
           {questions && questions.length > 0 && (
             <span>{questions?.length} pergunta(s)</span>
           )}
-        </div>
+        </RoomTitle>
 
         <div className="question-list">
           {questions?.map((question) => {
@@ -115,6 +115,6 @@ export const AdminRoom: React.FC = () => {
           })}
         </div>
       </main>
-    </div>
+    </Container>
   );
 };
