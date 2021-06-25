@@ -23,7 +23,7 @@ export const Room: React.FC = () => {
   const [newQuestion, setNewQuestion] = useState('');
   const roomId = params.id;
 
-  const { title, questions } = useRoom(roomId);
+  const { title, questions, limitToCollapse } = useRoom(roomId);
 
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault();
@@ -141,7 +141,7 @@ export const Room: React.FC = () => {
 
         <div className="question-list">
           {questions
-            ?.filter((question) => question.likeCount >= -1)
+            ?.filter((question) => question.likeCount >= limitToCollapse)
             .sort((b, a) => a.likeCount - b.likeCount)
             .sort((b, a) => Number(b.isAnswered) - Number(a.isAnswered))
             .map((question) => {

@@ -49,6 +49,8 @@ export const useRoom = (roomId: string) => {
   const [questions, setQuestions] = useState<QuestionType[]>([]);
   const [title, setTitle] = useState('');
 
+  const limitToCollapse = process.env.REACT_APP_LIMIT_TO_COLLAPSE || 0;
+
   useEffect(() => {
     const roomRef = database.ref(`rooms/${roomId}`);
 
@@ -89,5 +91,5 @@ export const useRoom = (roomId: string) => {
     };
   }, [roomId, user?.id]);
 
-  return { questions, title };
+  return { questions, title, limitToCollapse };
 };

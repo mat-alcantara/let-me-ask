@@ -24,7 +24,7 @@ export const AdminRoom: React.FC = () => {
   const params = useParams<RoomParams>();
   const roomId = params.id;
 
-  const { title, questions } = useRoom(roomId);
+  const { title, questions, limitToCollapse } = useRoom(roomId);
 
   async function handleEndRoom() {
     await database.ref(`rooms/${roomId}`).update({
@@ -77,7 +77,7 @@ export const AdminRoom: React.FC = () => {
 
         <div className="question-list">
           {questions
-            ?.filter((question) => question.likeCount >= 0)
+            ?.filter((question) => question.likeCount >= limitToCollapse)
             .sort((b, a) => a.likeCount - b.likeCount)
             .sort((b, a) => Number(b.isAnswered) - Number(a.isAnswered))
             .map((question) => {
@@ -130,7 +130,7 @@ export const AdminRoom: React.FC = () => {
         <Separator>Respostas colapsadas</Separator>
         <div className="question-list">
           {questions
-            ?.filter((question) => question.likeCount < 0)
+            ?.filter((question) => question.likeCount < limitToCollapse)
             .map((question) => {
               return (
                 <Question
