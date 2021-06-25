@@ -2,16 +2,16 @@ import React, { FormEvent, useState } from 'react';
 
 import { Link, useHistory } from 'react-router-dom';
 
-import { database } from '../services/firebase';
+import { database } from '../../services/firebase';
 
-import illustrationImg from '../assets/illustration.svg';
-import logoImg from '../assets/logo.svg';
+import illustrationImg from '../../assets/illustration.svg';
+import logoImg from '../../assets/logo.svg';
 
-import { Button } from '../components/Button';
+import { Button } from '../../components/Button';
 
-import { useAuth } from '../hooks/useAuth';
+import { useAuth } from '../../hooks/useAuth';
 
-import '../styles/auth.scss';
+import { Container, MainContent } from './styles';
 
 export const NewRoom: React.FC = () => {
   const { user } = useAuth();
@@ -37,7 +37,7 @@ export const NewRoom: React.FC = () => {
   };
 
   return (
-    <div id="page-auth">
+    <Container>
       <aside>
         <img
           src={illustrationImg}
@@ -47,7 +47,7 @@ export const NewRoom: React.FC = () => {
         <p>Tire as dúvidas da sua audiência em tempo-real</p>
       </aside>
       <main>
-        <div className="main-content">
+        <MainContent>
           <img src={logoImg} alt="Letmeask" />
           <h2>Criar uma nova sala</h2>
           <form onSubmit={(e) => handleCreateRoom(e)}>
@@ -62,8 +62,8 @@ export const NewRoom: React.FC = () => {
           <p>
             Quer entrar em uma sala existente? <Link to="/">clique aqui</Link>
           </p>
-        </div>
+        </MainContent>
       </main>
-    </div>
+    </Container>
   );
 };

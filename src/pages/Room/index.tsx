@@ -2,16 +2,16 @@ import React, { FormEvent, useState } from 'react';
 
 import { useParams } from 'react-router-dom';
 
-import logoImg from '../assets/logo.svg';
+import logoImg from '../../assets/logo.svg';
 
-import { Button } from '../components/Button';
-import { Question } from '../components/Question';
-import { RoomCode } from '../components/RoomCode';
-import { useAuth } from '../hooks/useAuth';
-import { useRoom } from '../hooks/useRoom';
-import { database } from '../services/firebase';
+import { Button } from '../../components/Button';
+import { Question } from '../../components/Question';
+import { RoomCode } from '../../components/RoomCode';
+import { useAuth } from '../../hooks/useAuth';
+import { useRoom } from '../../hooks/useRoom';
+import { database } from '../../services/firebase';
 
-import '../styles/room.scss';
+import { Container, Content, RoomTitle, FormFooter } from './styles';
 
 type RoomParams = {
   id: string;
@@ -67,21 +67,21 @@ export const Room: React.FC = () => {
   }
 
   return (
-    <div id="page-room">
+    <Container>
       <header>
-        <div className="content">
+        <Content>
           <img src={logoImg} alt="Letmeask" />
           <RoomCode code={roomId} />
-        </div>
+        </Content>
       </header>
 
       <main>
-        <div className="room-title">
+        <RoomTitle>
           <h1>Sala {title}</h1>
           {questions && questions?.length > 0 && (
             <span>{questions?.length} pergunta(s)</span>
           )}
-        </div>
+        </RoomTitle>
 
         <form onSubmit={handleSendQuestion}>
           <textarea
@@ -90,7 +90,7 @@ export const Room: React.FC = () => {
             value={newQuestion}
           />
 
-          <div className="form-footer">
+          <FormFooter>
             {user ? (
               <div className="user-info">
                 <img src={user.avatar} alt={user.name} />
@@ -105,7 +105,7 @@ export const Room: React.FC = () => {
             <Button type="submit" disabled={!user}>
               Enviar pergunta
             </Button>
-          </div>
+          </FormFooter>
         </form>
 
         <div className="question-list">
@@ -152,6 +152,6 @@ export const Room: React.FC = () => {
           })}
         </div>
       </main>
-    </div>
+    </Container>
   );
 };

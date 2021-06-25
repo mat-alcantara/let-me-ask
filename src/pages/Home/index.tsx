@@ -2,16 +2,16 @@ import React, { FormEvent, useState } from 'react';
 
 import { useHistory } from 'react-router-dom';
 
-import illustrationImg from '../assets/illustration.svg';
-import logoImg from '../assets/logo.svg';
-import googleIconImg from '../assets/google-icon.svg';
+import illustrationImg from '../../assets/illustration.svg';
+import logoImg from '../../assets/logo.svg';
+import googleIconImg from '../../assets/google-icon.svg';
 
-import { Button } from '../components/Button';
-import { useAuth } from '../hooks/useAuth';
+import { Button } from '../../components/Button';
+import { useAuth } from '../../hooks/useAuth';
 
-import '../styles/auth.scss';
+import { Container, CreateRoom, MainContent, Separator } from './styles';
 
-import { database } from '../services/firebase';
+import { database } from '../../services/firebase';
 
 export const Home: React.FC = () => {
   const history = useHistory();
@@ -46,7 +46,7 @@ export const Home: React.FC = () => {
   };
 
   return (
-    <div id="page-auth">
+    <Container>
       <aside>
         <img
           src={illustrationImg}
@@ -56,17 +56,13 @@ export const Home: React.FC = () => {
         <p>Tire as dúvidas da sua audiência em tempo-real</p>
       </aside>
       <main>
-        <div className="main-content">
+        <MainContent>
           <img src={logoImg} alt="Letmeask" />
-          <button
-            type="button"
-            onClick={handleCreateRoom}
-            className="create-room"
-          >
+          <CreateRoom type="button" onClick={handleCreateRoom}>
             <img src={googleIconImg} alt="Logo do Google" />
             Crie sua sala com o Google
-          </button>
-          <div className="separator">ou entre em uma sala</div>
+          </CreateRoom>
+          <Separator>ou entre em uma sala</Separator>
           <form onSubmit={handleJoinRoom}>
             <input
               type="text"
@@ -76,8 +72,8 @@ export const Home: React.FC = () => {
             />
             <Button type="submit">Entrar na sala</Button>
           </form>
-        </div>
+        </MainContent>
       </main>
-    </div>
+    </Container>
   );
 };
