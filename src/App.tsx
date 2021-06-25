@@ -9,6 +9,8 @@ import { Room } from './pages/Room';
 import { AuthContextProvider } from './contexts/AuthContext';
 import { AdminRoom } from './pages/AdminRoom';
 
+import { GlobalStyle } from './styles/global';
+
 const App: React.FC = () => {
   return (
     <BrowserRouter>
@@ -20,6 +22,8 @@ const App: React.FC = () => {
           <Route path="/admin/rooms/:id" exact component={AdminRoom} />
         </Switch>
       </AuthContextProvider>
+
+      <GlobalStyle />
     </BrowserRouter>
   );
 };
