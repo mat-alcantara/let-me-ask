@@ -78,6 +78,7 @@ export const AdminRoom: React.FC = () => {
         <div className="question-list">
           {questions
             ?.sort((b, a) => a.likeCount - b.likeCount)
+            .sort((b, a) => Number(b.isAnswered) - Number(a.isAnswered))
             .map((question) => {
               return (
                 <Question
