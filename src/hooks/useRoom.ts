@@ -65,7 +65,9 @@ export const useRoom = (roomId: string) => {
             author: value.author,
             isHighlighted: value.isHighlighted,
             isAnswered: value.isAnswered,
-            likeCount: Object.values(value.likes ?? {}).length,
+            likeCount:
+              Object.values(value.likes ?? {}).length -
+              Object.values(value.deslikes ?? {}).length,
             deslikeCount: Object.values(value.deslikes ?? {}).length,
             likeId: Object.entries(value.likes ?? {}).find(
               // eslint-disable-next-line no-shadow
