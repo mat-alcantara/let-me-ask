@@ -154,7 +154,13 @@ export const Room: React.FC = () => {
                 >
                   {!question.isAnswered && (
                     <>
-                      <span>{question.likeCount}</span>
+                      <span
+                        className={`${question.likeId ? 'liked' : ''} ${
+                          question.deslikeId ? 'disliked' : ''
+                        }`}
+                      >
+                        {question.likeCount}
+                      </span>
                       <button
                         className={`like-button ${
                           question.likeId ? 'liked' : ''

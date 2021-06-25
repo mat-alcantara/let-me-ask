@@ -89,7 +89,13 @@ export const AdminRoom: React.FC = () => {
                 >
                   {!question.isAnswered && (
                     <>
-                      <span>{question.likeCount}</span>
+                      <span
+                        className={`${question.likeId ? 'liked' : ''} ${
+                          question.deslikeId ? 'disliked' : ''
+                        }`}
+                      >
+                        {question.likeCount}
+                      </span>
                       <button
                         type="button"
                         onClick={() =>

@@ -6,6 +6,14 @@
 
   span {
     margin: auto auto;
+
+    &.liked {
+      color: #835afd;
+    }
+
+    &.disliked {
+      color: #ff0000;
+    }
   }
 
   & + .question {
