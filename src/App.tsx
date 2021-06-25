@@ -2,16 +2,16 @@ import React from 'react';
 
 import Routes from './routes';
 
-import { AuthContextProvider } from './contexts/AuthContext';
+import ContextsProvider from './hooks';
 
 import { GlobalStyle } from './styles/global';
 
 const App: React.FC = () => {
   return (
-    <AuthContextProvider>
+    <ContextsProvider>
       <Routes />
       <GlobalStyle />
-    </AuthContextProvider>
+    </ContextsProvider>
   );
 };
 

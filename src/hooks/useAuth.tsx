@@ -1,4 +1,10 @@
-import React, { createContext, ReactNode, useEffect, useState } from 'react';
+import React, {
+  createContext,
+  ReactNode,
+  useEffect,
+  useState,
+  useContext,
+} from 'react';
 
 import { auth, firebase } from '../services/firebase';
 
@@ -73,3 +79,13 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
     </AuthContext.Provider>
   );
 };
+
+export function useAuth(): AuthContextType {
+  const context = useContext(AuthContext);
+
+  if (!context) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
+
+  return context;
+}
