@@ -165,9 +165,7 @@ export const Room: React.FC = () => {
                         )
                       }
                     >
-                      {question.likeCount > 0 && (
-                        <span>{question.likeCount}</span>
-                      )}
+                      <span>{question.likeCount}</span>
                       <svg
                         width="24"
                         height="24"
