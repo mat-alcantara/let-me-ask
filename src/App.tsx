@@ -15,9 +15,9 @@ const App: React.FC = () => {
       <AuthContextProvider>
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/rooms/new" component={NewRoom} />
-          <Route path="/rooms/:id" component={Room} />
-          <Route path="/admin/rooms/:id" component={AdminRoom} />
+          <Route path="/rooms/new" exact component={NewRoom} />
+          <Route path="/rooms/:id" exact component={Room} />
+          <Route path="/admin/rooms/:id" exact component={AdminRoom} />
         </Switch>
       </AuthContextProvider>
     </BrowserRouter>
