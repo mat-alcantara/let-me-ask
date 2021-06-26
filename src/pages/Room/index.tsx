@@ -1,4 +1,6 @@
-import React, { FormEvent, useState } from 'react';
+/* eslint-disable react/no-danger */
+import React, { FormEvent, useEffect, useState } from 'react';
+import Parser from 'html-react-parser';
 
 import { useParams } from 'react-router-dom';
 
@@ -21,7 +23,7 @@ export const Room: React.FC = () => {
   const [newQuestion, setNewQuestion] = useState('');
   const roomId = params.id;
 
-  const { title, questions, limitToCollapse } = useRoom(roomId);
+  const { title, questions, limitToCollapse, live } = useRoom(roomId);
 
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault();
@@ -109,17 +111,9 @@ export const Room: React.FC = () => {
           )}
         </RoomTitle>
 
-        <LiveContainer>
-          <iframe
-            width="560"
-            height="315"
-            src="https://www.youtube.com/embed/5qap5aO4i9A"
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
-        </LiveContainer>
+        {live && Parser(live) !== String() && Parser(live) !== [] && (
+          <LiveContainer>{Parser(live)}</LiveContainer>
+        )}
 
         <form onSubmit={handleSendQuestion}>
           <textarea

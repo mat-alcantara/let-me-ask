@@ -86,8 +86,8 @@ export const useRoom = (roomId: string, liveLink?: string) => {
       setTitle(databaseRoom?.title);
       setQuestions(parsedQuestions);
 
-      if (liveLink) {
-        setLive(liveLink);
+      if (databaseRoom?.liveLink) {
+        setLive(databaseRoom?.liveLink);
       }
     });
 
