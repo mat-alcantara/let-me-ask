@@ -44,10 +44,11 @@ type QuestionType = {
 };
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const useRoom = (roomId: string) => {
+export const useRoom = (roomId: string, liveLink?: string) => {
   const { user } = useAuth();
   const [questions, setQuestions] = useState<QuestionType[]>([]);
   const [title, setTitle] = useState('');
+  const [live, setLive] = useState('');
 
   const limitToCollapse = process.env.REACT_APP_LIMIT_TO_COLLAPSE || 0;
 
@@ -84,12 +85,16 @@ export const useRoom = (roomId: string) => {
 
       setTitle(databaseRoom?.title);
       setQuestions(parsedQuestions);
+
+      if (liveLink) {
+        setLive(liveLink);
+      }
     });
 
     return () => {
       roomRef.off('value');
     };
-  }, [roomId, user?.id]);
+  }, [roomId, user?.id, liveLink]);
 
-  return { questions, title, limitToCollapse };
+  return { questions, title, limitToCollapse, live };
 };
