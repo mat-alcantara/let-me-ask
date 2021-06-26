@@ -15,6 +15,7 @@ import { Content } from './styles';
 import logoImg from '../../assets/logo.svg';
 import darkLogoImg from '../../assets/dark-logo.svg';
 import { database, auth } from '../../services/firebase';
+import { useAuth } from '../../hooks/useAuth';
 
 type HeaderProps = {
   roomId: string;
@@ -24,10 +25,12 @@ type HeaderProps = {
 const Header: React.FC<HeaderProps> = ({ isAdminPage, roomId }) => {
   const { title } = useContext(ThemeContext);
   const { switchTheme, theme } = useTheme();
+  const { handleRemoveUser } = useAuth();
   const history = useHistory();
 
   const handleLogOut = useCallback(async () => {
     await auth.signOut().then(() => {
+      handleRemoveUser();
       history.push('/');
     });
   }, []);
