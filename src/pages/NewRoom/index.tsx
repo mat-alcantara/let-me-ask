@@ -1,4 +1,5 @@
-import React, { FormEvent, useState } from 'react';
+import React, { FormEvent, useState, useContext } from 'react';
+import { ThemeContext } from 'styled-components';
 
 import { Link, useHistory } from 'react-router-dom';
 
@@ -6,6 +7,7 @@ import { database } from '../../services/firebase';
 
 import illustrationImg from '../../assets/illustration.svg';
 import logoImg from '../../assets/logo.svg';
+import darkLogo from '../../assets/dark-logo.svg';
 
 import { Button } from '../../components/Button';
 
@@ -15,6 +17,7 @@ import { Container, MainContent } from './styles';
 
 export const NewRoom: React.FC = () => {
   const { user } = useAuth();
+  const { title } = useContext(ThemeContext);
   const history = useHistory();
 
   const [newRoom, setNewRoom] = useState('');
@@ -48,7 +51,8 @@ export const NewRoom: React.FC = () => {
       </aside>
       <main>
         <MainContent>
-          <img src={logoImg} alt="Letmeask" />
+          {title === 'light' && <img src={logoImg} alt="Letmeask" />}
+          {title === 'dark' && <img src={darkLogo} alt="Letmeask" />}
           <h2>Criar uma nova sala</h2>
           <form onSubmit={(e) => handleCreateRoom(e)}>
             <input

@@ -18,4 +18,8 @@ export const GlobalStyle = createGlobalStyle`
   textarea {
     font: 400 16px "Roboto", sans-serif;
   }
+
+  input {
+    background: ${(props) => props.theme.colors.input};
+  }
 `;
