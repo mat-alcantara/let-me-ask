@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  margin-bottom: 64px;
+
   @media (max-width: 480px) {
     padding-left: 16px;
     padding-right: 16px;
     max-width: 400px;
-    margin: 0 auto;
+    margin: 0 auto 32px auto;
   }
 
   header {
@@ -43,12 +45,12 @@ export const RoomTitle = styled.div`
     color: ${(props) => props.theme.colors.text};
 
     @media (max-width: 480px) {
-      max-width: 150px;
-      font-size: 12px;
+      font-size: 14px;
     }
   }
 
   span {
+    text-align: center;
     margin-left: 16px;
     background: #e559f9;
     border-radius: 9999px;
@@ -56,6 +58,12 @@ export const RoomTitle = styled.div`
     color: ${(props) => props.theme.colors.text};
     font-weight: 500;
     font-size: 14px;
+
+    @media (max-width: 480px) {
+      margin-left: 4px;
+      font-size: 10px;
+      text-align: center;
+    }
   }
 `;
 
