@@ -13,6 +13,8 @@ import { Button } from '../../components/Button';
 import { useAuth } from '../../hooks/useAuth';
 import { useTheme } from '../../hooks/useTheme';
 
+import { RemoveModal } from '../../components/Modal';
+
 import { Container, CreateRoom, MainContent, Separator } from './styles';
 
 import { database } from '../../services/firebase';
@@ -54,6 +56,7 @@ export const Home: React.FC = () => {
 
   return (
     <Container>
+      <RemoveModal />
       <aside>
         <img
           src={illustrationImg}
