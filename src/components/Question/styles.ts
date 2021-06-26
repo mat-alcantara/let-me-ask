@@ -62,12 +62,21 @@ export const Container = styled.div`
           margin-left: 8px;
           color: ${(props) => props.theme.colors.text};
           font-size: 14px;
+
+          @media (max-width: 480px) {
+            font-size: 12px;
+            margin-left: 4px;
+          }
         }
       }
 
       > div {
         display: flex;
         gap: 16px;
+
+        @media (max-width: 480px) {
+          gap: 8px;
+        }
       }
 
       button {

@@ -1,6 +1,13 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  @media (max-width: 480px) {
+    padding-left: 16px;
+    padding-right: 16px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
   header {
     padding: 24px;
     border-bottom: 1px solid #e2e2e2;

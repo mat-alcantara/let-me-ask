@@ -1,6 +1,13 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  @media (max-width: 480px) {
+    padding-left: 16px;
+    padding-right: 16px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
   header {
     padding: 24px;
     border-bottom: 1px solid #e2e2e2;
@@ -54,10 +61,12 @@ export const FormFooter = styled.div`
   align-items: center;
   margin-top: 16px;
   margin-bottom: 32px;
+  width: 100%;
 
   .user-info {
     display: flex;
     align-items: center;
+    height: 100%;
 
     img {
       width: 32px;
@@ -70,6 +79,9 @@ export const FormFooter = styled.div`
       color: ${(props) => props.theme.colors.text};
       font-weight: 500;
       font-size: 14px;
+      @media (max-width: 480px) {
+        max-width: 120px;
+      }
     }
   }
 

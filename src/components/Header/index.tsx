@@ -44,42 +44,48 @@ const Header: React.FC<HeaderProps> = ({ isAdminPage, roomId }) => {
   }
 
   return (
-    <Content>
-      {title === 'light' && (
-        <Link to="/">
-          <img src={logoImg} alt="Letmeask" />
-        </Link>
-      )}
-      {title === 'dark' && (
-        <Link to="/">
-          <img src={darkLogoImg} alt="Letmeask" />
-        </Link>
-      )}
-      <div
-        style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}
-      >
-        <Switch
-          onChange={switchTheme}
-          checked={theme.title === 'dark'}
-          checkedIcon={false}
-          uncheckedIcon={false}
-          height={10}
-          width={40}
-          handleDiameter={20}
-          offColor="#AAA"
-          onColor="#835afd"
-        />
-        <RoomCode code={roomId} />
-        {isAdminPage && (
-          <Button isOutlined onClick={handleEndRoom}>
-            Encerrar sala
-          </Button>
+    <>
+      <Content>
+        {title === 'light' && (
+          <Link to="/">
+            <img src={logoImg} alt="Letmeask" />
+          </Link>
         )}
-        <Button isOutlined onClick={handleLogOut}>
-          <FiLogOut />
-        </Button>
-      </div>
-    </Content>
+        {title === 'dark' && (
+          <Link to="/">
+            <img src={darkLogoImg} alt="Letmeask" />
+          </Link>
+        )}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+          }}
+        >
+          <Switch
+            onChange={switchTheme}
+            checked={theme.title === 'dark'}
+            checkedIcon={false}
+            uncheckedIcon={false}
+            height={10}
+            width={40}
+            handleDiameter={20}
+            offColor="#AAA"
+            onColor="#835afd"
+          />
+          <RoomCode code={roomId} />
+          {isAdminPage && (
+            <Button isOutlined onClick={handleEndRoom}>
+              Encerrar sala
+            </Button>
+          )}
+          <Button isOutlined onClick={handleLogOut}>
+            <FiLogOut />
+          </Button>
+        </div>
+      </Content>
+    </>
   );
 };
 
