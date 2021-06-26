@@ -2,13 +2,26 @@ import React from 'react';
 import Modal from 'react-modal';
 
 import deleteImg from '../../assets/delete.svg';
+import { database } from '../../services/firebase';
 
 import { Button } from '../Button';
 
 import { RemoveImg } from './styles';
 
-export const RemoveModal: React.FC = () => {
+type RemoveModalProps = {
+  questionId: string;
+  roomId: string;
+};
+
+export const RemoveModal: React.FC<RemoveModalProps> = ({
+  questionId,
+  roomId,
+}) => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
+
+  async function handleDeleteQuestion() {
+    await database.ref(`rooms/${roomId}/questions/${questionId}`).remove();
+  }
 
   function openModal() {
     setIsOpen(true);
@@ -33,7 +46,7 @@ export const RemoveModal: React.FC = () => {
   return (
     <div>
       <button type="button" onClick={openModal}>
-        Open Modal
+        <img src={deleteImg} alt="Remover pergunta" />
       </button>
       <Modal
         isOpen={modalIsOpen}
@@ -71,7 +84,12 @@ export const RemoveModal: React.FC = () => {
             >
               Cancelar
             </Button>
-            <Button style={{ background: '#E73F5D' }}>Sim, excluir</Button>
+            <Button
+              onClick={handleDeleteQuestion}
+              style={{ background: '#E73F5D' }}
+            >
+              Sim, excluir
+            </Button>
           </div>
         </div>
       </Modal>

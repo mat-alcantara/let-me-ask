@@ -2,7 +2,6 @@ import React from 'react';
 
 import { useParams } from 'react-router-dom';
 
-import deleteImg from '../../assets/delete.svg';
 import checkImg from '../../assets/check.svg';
 import answerImg from '../../assets/answer.svg';
 
@@ -11,6 +10,8 @@ import { useRoom } from '../../hooks/useRoom';
 import { database } from '../../services/firebase';
 
 import { Container, RoomTitle, Separator } from './styles';
+
+import { RemoveModal } from '../../components/Modal';
 
 import Header from '../../components/Header';
 
@@ -23,13 +24,6 @@ export const AdminRoom: React.FC = () => {
   const roomId = params.id;
 
   const { title, questions, limitToCollapse } = useRoom(roomId);
-
-  async function handleDeleteQuestion(questionId: string) {
-    // eslint-disable-next-line no-alert
-    if (window.confirm('Tem certeza que você deseja excluir esta pergunta?')) {
-      await database.ref(`rooms/${roomId}/questions/${questionId}`).remove();
-    }
-  }
 
   async function handleCheckQuestionAsAnswered(questionId: string) {
     await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
@@ -99,12 +93,7 @@ export const AdminRoom: React.FC = () => {
                       </button>
                     </>
                   )}
-                  <button
-                    type="button"
-                    onClick={() => handleDeleteQuestion(question.id)}
-                  >
-                    <img src={deleteImg} alt="Remover pergunta" />
-                  </button>
+                  <RemoveModal roomId={roomId} questionId={question.id} />
                 </Question>
               );
             })}
@@ -122,12 +111,7 @@ export const AdminRoom: React.FC = () => {
                   isAnswered={question.isAnswered}
                   isHighlighted={question.isHighlighted}
                 >
-                  <button
-                    type="button"
-                    onClick={() => handleDeleteQuestion(question.id)}
-                  >
-                    <img src={deleteImg} alt="Remover pergunta" />
-                  </button>
+                  <RemoveModal roomId={roomId} questionId={question.id} />
                 </Question>
               );
             })}
