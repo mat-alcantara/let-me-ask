@@ -1,9 +1,11 @@
-import React, { FormEvent, useState } from 'react';
+import React, { FormEvent, useState, useContext } from 'react';
+import { ThemeContext } from 'styled-components';
 
 import { useHistory } from 'react-router-dom';
 
 import illustrationImg from '../../assets/illustration.svg';
 import logoImg from '../../assets/logo.svg';
+import darkLogo from '../../assets/dark-logo.svg';
 import googleIconImg from '../../assets/google-icon.svg';
 
 import { Button } from '../../components/Button';
@@ -16,6 +18,8 @@ import { database } from '../../services/firebase';
 export const Home: React.FC = () => {
   const history = useHistory();
   const { user, signInWithGoogle } = useAuth();
+
+  const { title } = useContext(ThemeContext);
 
   const [roomCode, setRoomCode] = useState('');
 
@@ -57,7 +61,8 @@ export const Home: React.FC = () => {
       </aside>
       <main>
         <MainContent>
-          <img src={logoImg} alt="Letmeask" />
+          {title === 'light' && <img src={logoImg} alt="Letmeask" />}
+          {title === 'dark' && <img src={darkLogo} alt="Letmeask" />}
           <CreateRoom type="button" onClick={handleCreateRoom}>
             <img src={googleIconImg} alt="Logo do Google" />
             Crie sua sala com o Google
