@@ -2,18 +2,17 @@ import React from 'react';
 
 import { useHistory, useParams } from 'react-router-dom';
 
-import logoImg from '../../assets/logo.svg';
 import deleteImg from '../../assets/delete.svg';
 import checkImg from '../../assets/check.svg';
 import answerImg from '../../assets/answer.svg';
 
-import { Button } from '../../components/Button';
 import { Question } from '../../components/Question';
-import { RoomCode } from '../../components/RoomCode';
 import { useRoom } from '../../hooks/useRoom';
 import { database } from '../../services/firebase';
 
-import { Container, Content, RoomTitle, Separator } from './styles';
+import { Container, RoomTitle, Separator } from './styles';
+
+import Header from '../../components/Header';
 
 type RoomParams = {
   id: string;
@@ -56,15 +55,7 @@ export const AdminRoom: React.FC = () => {
   return (
     <Container>
       <header>
-        <Content>
-          <img src={logoImg} alt="Letmeask" />
-          <div>
-            <RoomCode code={roomId} />
-            <Button isOutlined onClick={handleEndRoom}>
-              Encerrar sala
-            </Button>
-          </div>
-        </Content>
+        <Header handleEndRoom={handleEndRoom} isAdminPage roomId={roomId} />
       </header>
 
       <main>
