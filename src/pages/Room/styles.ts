@@ -89,3 +89,11 @@ export const FormFooter = styled.div`
     }
   }
 `;
+
+export const LiveContainer = styled.div`
+  margin: 0 auto 16px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+`;

@@ -9,7 +9,7 @@ import { useRoom } from '../../hooks/useRoom';
 import { database } from '../../services/firebase';
 import Header from '../../components/Header';
 
-import { Container, RoomTitle, FormFooter } from './styles';
+import { Container, RoomTitle, FormFooter, LiveContainer } from './styles';
 
 type RoomParams = {
   id: string;
@@ -108,6 +108,18 @@ export const Room: React.FC = () => {
             <span>{questions?.length} pergunta(s)</span>
           )}
         </RoomTitle>
+
+        <LiveContainer>
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/5qap5aO4i9A"
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        </LiveContainer>
 
         <form onSubmit={handleSendQuestion}>
           <textarea
