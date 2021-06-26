@@ -35,6 +35,12 @@ export const Container = styled.div`
     }
   }
 
+  @media (max-width: 720px) {
+    aside {
+      display: none;
+    }
+  }
+
   main {
     flex: 8;
 

@@ -12,6 +12,7 @@ export const Container = styled.div`
     color: #fff;
 
     display: flex;
+
     flex-direction: column;
     justify-content: center;
 
@@ -32,6 +33,12 @@ export const Container = styled.div`
       line-height: 32px;
       margin-top: 16px;
       color: #f8f8f8;
+    }
+  }
+
+  @media (max-width: 720px) {
+    aside {
+      display: none;
     }
   }
 
