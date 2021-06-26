@@ -57,20 +57,24 @@ export const Room: React.FC = () => {
     likeId: string | undefined,
     deslikeId: string | undefined,
   ) {
-    if (deslikeId) {
-      await database
-        .ref(`rooms/${roomId}/questions/${questionId}/deslikes/${deslikeId}`)
-        .remove();
-    }
+    if (user?.id) {
+      if (deslikeId) {
+        await database
+          .ref(`rooms/${roomId}/questions/${questionId}/deslikes/${deslikeId}`)
+          .remove();
+      }
 
-    if (likeId) {
-      await database
-        .ref(`rooms/${roomId}/questions/${questionId}/likes/${likeId}`)
-        .remove();
-    } else {
-      await database.ref(`rooms/${roomId}/questions/${questionId}/likes`).push({
-        authorId: user?.id,
-      });
+      if (likeId) {
+        await database
+          .ref(`rooms/${roomId}/questions/${questionId}/likes/${likeId}`)
+          .remove();
+      } else {
+        await database
+          .ref(`rooms/${roomId}/questions/${questionId}/likes`)
+          .push({
+            authorId: user?.id,
+          });
+      }
     }
   }
 
@@ -79,22 +83,24 @@ export const Room: React.FC = () => {
     likeId: string | undefined,
     deslikeId: string | undefined,
   ) {
-    if (likeId) {
-      await database
-        .ref(`rooms/${roomId}/questions/${questionId}/likes/${likeId}`)
-        .remove();
-    }
+    if (user?.id) {
+      if (likeId) {
+        await database
+          .ref(`rooms/${roomId}/questions/${questionId}/likes/${likeId}`)
+          .remove();
+      }
 
-    if (deslikeId) {
-      await database
-        .ref(`rooms/${roomId}/questions/${questionId}/deslikes/${deslikeId}`)
-        .remove();
-    } else {
-      await database
-        .ref(`rooms/${roomId}/questions/${questionId}/deslikes`)
-        .push({
-          authorId: user?.id,
-        });
+      if (deslikeId) {
+        await database
+          .ref(`rooms/${roomId}/questions/${questionId}/deslikes/${deslikeId}`)
+          .remove();
+      } else {
+        await database
+          .ref(`rooms/${roomId}/questions/${questionId}/deslikes`)
+          .push({
+            authorId: user?.id,
+          });
+      }
     }
   }
 
