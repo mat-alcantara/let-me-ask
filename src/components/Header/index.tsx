@@ -8,7 +8,6 @@ import Switch from 'react-switch';
 
 import { useTheme } from '../../hooks/useTheme';
 
-import { RoomCode } from '../RoomCode';
 import { Button } from '../Button';
 import { Content, Logo, Menus } from './styles';
 
@@ -58,8 +57,6 @@ const Header: React.FC<HeaderProps> = ({ isAdminPage, roomId }) => {
             </Link>
           )}
         </Logo>
-
-        <RoomCode code={roomId} />
 
         <Menus>
           <Switch

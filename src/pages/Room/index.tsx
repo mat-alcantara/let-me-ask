@@ -12,6 +12,7 @@ import { database } from '../../services/firebase';
 import Header from '../../components/Header';
 
 import { Container, RoomTitle, FormFooter, LiveContainer } from './styles';
+import { RoomCode } from '../../components/RoomCode';
 
 type RoomParams = {
   id: string;
@@ -104,6 +105,8 @@ export const Room: React.FC = () => {
       </header>
 
       <main>
+        <RoomCode code={roomId} />
+
         <RoomTitle>
           <h1>Sala {title}</h1>
           {questions && questions?.length > 0 && (

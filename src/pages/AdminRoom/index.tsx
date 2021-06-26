@@ -14,6 +14,7 @@ import { Container, RoomTitle, Separator } from './styles';
 import { RemoveModal } from '../../components/Modal';
 
 import Header from '../../components/Header';
+import { RoomCode } from '../../components/RoomCode';
 
 type RoomParams = {
   id: string;
@@ -47,6 +48,8 @@ export const AdminRoom: React.FC = () => {
       </header>
 
       <main>
+        <RoomCode code={roomId} />
+
         <RoomTitle>
           <h1>Sala {title}</h1>
           {questions && questions.length > 0 && (
