@@ -12,6 +12,10 @@ export const Container = styled.button`
 
   display: flex;
 
+  @media (max-width: 480px) {
+    height: 35px;
+  }
+
   div {
     background: #835afd;
     padding: 0 12px;
@@ -29,5 +33,10 @@ export const Container = styled.button`
     width: 250px;
     font-size: 14px;
     font-weight: 500;
+
+    @media (max-width: 480px) {
+      width: 150px;
+      font-size: 12px;
+    }
   }
 `;

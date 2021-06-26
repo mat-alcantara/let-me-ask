@@ -10,7 +10,7 @@ import { useTheme } from '../../hooks/useTheme';
 
 import { RoomCode } from '../RoomCode';
 import { Button } from '../Button';
-import { Content } from './styles';
+import { Content, Logo, Menus } from './styles';
 
 import logoImg from '../../assets/logo.svg';
 import darkLogoImg from '../../assets/dark-logo.svg';
@@ -46,23 +46,22 @@ const Header: React.FC<HeaderProps> = ({ isAdminPage, roomId }) => {
   return (
     <>
       <Content>
-        {title === 'light' && (
-          <Link to="/">
-            <img src={logoImg} alt="Letmeask" />
-          </Link>
-        )}
-        {title === 'dark' && (
-          <Link to="/">
-            <img src={darkLogoImg} alt="Letmeask" />
-          </Link>
-        )}
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-          }}
-        >
+        <Logo>
+          {title === 'light' && (
+            <Link to="/">
+              <img src={logoImg} alt="Letmeask" />
+            </Link>
+          )}
+          {title === 'dark' && (
+            <Link to="/">
+              <img src={darkLogoImg} alt="Letmeask" />
+            </Link>
+          )}
+        </Logo>
+
+        <RoomCode code={roomId} />
+
+        <Menus>
           <Switch
             onChange={switchTheme}
             checked={theme.title === 'dark'}
@@ -74,16 +73,16 @@ const Header: React.FC<HeaderProps> = ({ isAdminPage, roomId }) => {
             offColor="#AAA"
             onColor="#835afd"
           />
-          <RoomCode code={roomId} />
+
           {isAdminPage && (
             <Button isOutlined onClick={handleEndRoom}>
-              Encerrar sala
+              Encerrar
             </Button>
           )}
           <Button isOutlined onClick={handleLogOut}>
             <FiLogOut />
           </Button>
-        </div>
+        </Menus>
       </Content>
     </>
   );

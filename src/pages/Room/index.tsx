@@ -99,7 +99,9 @@ export const Room: React.FC = () => {
 
   return (
     <Container>
-      <header>{/* <Header roomId={roomId} /> */}</header>
+      <header>
+        <Header roomId={roomId} />
+      </header>
 
       <main>
         <RoomTitle>

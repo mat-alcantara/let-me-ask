@@ -19,4 +19,20 @@ export const Content = styled.div`
       height: 40px;
     }
   }
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 16px;
+  }
+`;
+
+export const Logo = styled.div``;
+
+export const Menus = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

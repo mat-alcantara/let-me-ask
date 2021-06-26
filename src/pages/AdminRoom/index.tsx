@@ -42,7 +42,9 @@ export const AdminRoom: React.FC = () => {
 
   return (
     <Container>
-      <header>{/* <Header isAdminPage roomId={roomId} /> */}</header>
+      <header>
+        <Header isAdminPage roomId={roomId} />
+      </header>
 
       <main>
         <RoomTitle>
