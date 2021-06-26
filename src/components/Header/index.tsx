@@ -4,6 +4,7 @@ import { ThemeContext } from 'styled-components';
 import Switch from 'react-switch';
 
 import { useHistory } from 'react-router-dom';
+import { useTheme } from '../../hooks/useTheme';
 
 import { RoomCode } from '../RoomCode';
 import { Button } from '../Button';
@@ -20,6 +21,7 @@ type HeaderProps = {
 
 const Header: React.FC<HeaderProps> = ({ isAdminPage, roomId }) => {
   const { title } = useContext(ThemeContext);
+  const { switchTheme, theme } = useTheme();
   const history = useHistory();
 
   async function handleEndRoom() {
@@ -34,17 +36,19 @@ const Header: React.FC<HeaderProps> = ({ isAdminPage, roomId }) => {
     <Content>
       {title === 'light' && <img src={logoImg} alt="Letmeask" />}
       {title === 'dark' && <img src={darkLogoImg} alt="Letmeask" />}
-      <div>
+      <div
+        style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}
+      >
         <Switch
-          onChange={() => console.log('ok')}
-          checked={false}
+          onChange={switchTheme}
+          checked={theme.title === 'dark'}
           checkedIcon={false}
           uncheckedIcon={false}
           height={10}
           width={40}
           handleDiameter={20}
-          offColor="#fff"
-          onColor="#000"
+          offColor="#AAA"
+          onColor="#835afd"
         />
         <RoomCode code={roomId} />
         {isAdminPage && (

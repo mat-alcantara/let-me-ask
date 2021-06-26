@@ -1,4 +1,10 @@
-import React, { createContext, useState, useContext, useCallback } from 'react';
+import React, {
+  createContext,
+  useState,
+  useContext,
+  useCallback,
+  useEffect,
+} from 'react';
 
 import lightTheme from '../styles/themes/light';
 import darkTheme from '../styles/themes/dark';
@@ -22,8 +28,21 @@ export const ThemeContext = createContext({} as ThemeContextType);
 export const ThemeContextProvider: React.FC = ({ children }) => {
   const [theme, setTheme] = useState(lightTheme);
 
+  useEffect(() => {
+    const themeFromStorage = localStorage.getItem('@letmeask:theme');
+
+    if (themeFromStorage) {
+      setTheme(JSON.parse(themeFromStorage));
+    }
+  }, []);
+
   const switchTheme = useCallback(() => {
     setTheme(theme.title === 'light' ? darkTheme : lightTheme);
+
+    localStorage.setItem(
+      '@letmeask:theme',
+      JSON.stringify(theme.title === 'light' ? darkTheme : lightTheme),
+    );
   }, [theme]);
 
   return (
