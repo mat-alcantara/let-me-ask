@@ -16,32 +16,12 @@ export const Container = styled.div`
         border: 0;
         padding: 16px;
         border-radius: 8px;
-        background: #fefefe;
+        background: ${(props) => props.theme.colors.input};
+        color: ${(props) => props.theme.colors.text};
         box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
         resize: vertical;
         min-height: 130px;
       }
-    }
-  }
-`;
-
-export const Content = styled.div`
-  max-width: 1120px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  > img {
-    max-height: 45px;
-  }
-
-  > div {
-    display: flex;
-    gap: 16px;
-
-    button {
-      height: 40px;
     }
   }
 `;
@@ -54,7 +34,7 @@ export const RoomTitle = styled.div`
   h1 {
     font-family: 'Poppins', sans-serif;
     font-size: 24px;
-    color: #29292e;
+    color: ${(props) => props.theme.colors.text};
   }
 
   span {
@@ -62,7 +42,7 @@ export const RoomTitle = styled.div`
     background: #e559f9;
     border-radius: 9999px;
     padding: 8px 16px;
-    color: #fff;
+    color: ${(props) => props.theme.colors.text};
     font-weight: 500;
     font-size: 14px;
   }
@@ -87,7 +67,7 @@ export const FormFooter = styled.div`
 
     span {
       margin-left: 8px;
-      color: #29292e;
+      color: ${(props) => props.theme.colors.text};
       font-weight: 500;
       font-size: 14px;
     }

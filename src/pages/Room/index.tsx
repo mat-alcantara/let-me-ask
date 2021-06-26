@@ -2,17 +2,14 @@ import React, { FormEvent, useState } from 'react';
 
 import { useParams } from 'react-router-dom';
 
-import logoImg from '../../assets/logo.svg';
-
 import { Button } from '../../components/Button';
 import { Question } from '../../components/Question';
-import { RoomCode } from '../../components/RoomCode';
 import { useAuth } from '../../hooks/useAuth';
 import { useRoom } from '../../hooks/useRoom';
 import { database } from '../../services/firebase';
 import Header from '../../components/Header';
 
-import { Container, Content, RoomTitle, FormFooter } from './styles';
+import { Container, RoomTitle, FormFooter } from './styles';
 
 type RoomParams = {
   id: string;

@@ -12,7 +12,7 @@ import { GlobalStyle } from './styles/global';
 
 const App: React.FC = () => {
   return (
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={lightTheme}>
       <ContextsProvider>
         <Routes />
         <GlobalStyle />
