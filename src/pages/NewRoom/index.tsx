@@ -24,6 +24,7 @@ export const NewRoom: React.FC = () => {
   const history = useHistory();
 
   const [newRoom, setNewRoom] = useState('');
+  const [liveLink, setLiveLink] = useState('');
 
   const handleCreateRoom = async (e: FormEvent) => {
     e.preventDefault();
@@ -37,6 +38,7 @@ export const NewRoom: React.FC = () => {
     const firebaseRoom = await roomRef.push({
       title: newRoom,
       authorId: user?.id,
+      liveLink,
     });
 
     history.push(`/admin/rooms/${firebaseRoom.key}`);
@@ -63,6 +65,12 @@ export const NewRoom: React.FC = () => {
               placeholder="Nome da sala"
               onChange={(e) => setNewRoom(e.target.value)}
               value={newRoom}
+            />
+            <input
+              type="text"
+              placeholder="Link da live"
+              onChange={(e) => setLiveLink(e.target.value)}
+              value={liveLink}
             />
             <Button type="submit">Criar sala</Button>
           </form>
