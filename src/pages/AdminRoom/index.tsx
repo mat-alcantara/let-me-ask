@@ -31,9 +31,12 @@ export const AdminRoom: React.FC = () => {
     });
   }
 
-  async function handleHighlightQuestion(questionId: string) {
+  async function handleHighlightQuestion(
+    questionId: string,
+    oldStatus: boolean,
+  ) {
     await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
-      isHighlighted: true,
+      isHighlighted: !oldStatus,
     });
   }
 
@@ -87,7 +90,12 @@ export const AdminRoom: React.FC = () => {
                       </button>
                       <button
                         type="button"
-                        onClick={() => handleHighlightQuestion(question.id)}
+                        onClick={() =>
+                          handleHighlightQuestion(
+                            question.id,
+                            question.isHighlighted,
+                          )
+                        }
                       >
                         <img src={answerImg} alt="Dar destaque à pergunta" />
                       </button>

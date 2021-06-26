@@ -67,7 +67,7 @@ const Header: React.FC<HeaderProps> = ({ isAdminPage, roomId }) => {
             Encerrar sala
           </Button>
         )}
-        <Button onClick={handleLogOut}>
+        <Button isOutlined onClick={handleLogOut}>
           <FiLogOut />
         </Button>
       </div>
