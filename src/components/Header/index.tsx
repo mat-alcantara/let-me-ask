@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from 'styled-components';
 
+import Switch from 'react-switch';
+
 import { useHistory } from 'react-router-dom';
 
 import { RoomCode } from '../RoomCode';
@@ -33,6 +35,17 @@ const Header: React.FC<HeaderProps> = ({ isAdminPage, roomId }) => {
       {title === 'light' && <img src={logoImg} alt="Letmeask" />}
       {title === 'dark' && <img src={darkLogoImg} alt="Letmeask" />}
       <div>
+        <Switch
+          onChange={() => console.log('ok')}
+          checked={false}
+          checkedIcon={false}
+          uncheckedIcon={false}
+          height={10}
+          width={40}
+          handleDiameter={20}
+          offColor="#fff"
+          onColor="#000"
+        />
         <RoomCode code={roomId} />
         {isAdminPage && (
           <Button isOutlined onClick={handleEndRoom}>

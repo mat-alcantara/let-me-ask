@@ -1,8 +1,7 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 
-import darkTheme from './styles/themes/dark';
-import lightTheme from './styles/themes/light';
+import { useTheme } from './hooks/useTheme';
 
 import Routes from './routes';
 
@@ -11,13 +10,15 @@ import ContextsProvider from './hooks';
 import { GlobalStyle } from './styles/global';
 
 const App: React.FC = () => {
+  const { theme } = useTheme();
+
   return (
-    <ThemeProvider theme={darkTheme}>
-      <ContextsProvider>
+    <ContextsProvider>
+      <ThemeProvider theme={theme}>
         <Routes />
         <GlobalStyle />
-      </ContextsProvider>
-    </ThemeProvider>
+      </ThemeProvider>
+    </ContextsProvider>
   );
 };
 
