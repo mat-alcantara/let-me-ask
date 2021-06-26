@@ -1,9 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { ThemeContext } from 'styled-components';
+import { useHistory } from 'react-router-dom';
+
+import { FiLogOut } from 'react-icons/fi';
 
 import Switch from 'react-switch';
 
-import { useHistory } from 'react-router-dom';
 import { useTheme } from '../../hooks/useTheme';
 
 import { RoomCode } from '../RoomCode';
@@ -12,7 +14,7 @@ import { Content } from './styles';
 
 import logoImg from '../../assets/logo.svg';
 import darkLogoImg from '../../assets/dark-logo.svg';
-import { database } from '../../services/firebase';
+import { database, auth } from '../../services/firebase';
 
 type HeaderProps = {
   roomId: string;
@@ -23,6 +25,12 @@ const Header: React.FC<HeaderProps> = ({ isAdminPage, roomId }) => {
   const { title } = useContext(ThemeContext);
   const { switchTheme, theme } = useTheme();
   const history = useHistory();
+
+  const handleLogOut = useCallback(async () => {
+    await auth.signOut().then(() => {
+      history.push('/');
+    });
+  }, []);
 
   async function handleEndRoom() {
     await database.ref(`rooms/${roomId}`).update({
@@ -56,6 +64,9 @@ const Header: React.FC<HeaderProps> = ({ isAdminPage, roomId }) => {
             Encerrar sala
           </Button>
         )}
+        <Button onClick={handleLogOut}>
+          <FiLogOut />
+        </Button>
       </div>
     </Content>
   );

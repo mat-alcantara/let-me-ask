@@ -4,6 +4,7 @@ import React, {
   useEffect,
   useState,
   useContext,
+  useCallback,
 } from 'react';
 
 import { auth, firebase } from '../services/firebase';
@@ -17,6 +18,7 @@ type User = {
 type AuthContextType = {
   user: User | undefined;
   signInWithGoogle: () => Promise<void>;
+  handleRemoveUser: () => void;
 };
 
 type AuthContextProviderProps = {
@@ -73,8 +75,12 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
     }
   }
 
+  const handleRemoveUser = useCallback(() => {
+    setUser(undefined);
+  }, [user]);
+
   return (
-    <AuthContext.Provider value={{ user, signInWithGoogle }}>
+    <AuthContext.Provider value={{ user, signInWithGoogle, handleRemoveUser }}>
       {children}
     </AuthContext.Provider>
   );
