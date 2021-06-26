@@ -7,6 +7,8 @@ declare module 'styled-components' {
       background: string;
       text: string;
       input: string;
+      answered: string;
+      highlighted: string;
     };
   }
 }

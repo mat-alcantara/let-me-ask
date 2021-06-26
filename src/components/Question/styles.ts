@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  background: ${(props) => props.theme.colors.input};
+
   .question {
-    background: ${(props) => props.theme.colors.background};
+    background: ${(props) => props.theme.colors.input};
     border-radius: 8px;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
     padding: 24px;
@@ -24,16 +26,16 @@ export const Container = styled.div`
     }
 
     &.highlighted {
-      background: #f4f0ff;
+      background: ${(props) => props.theme.colors.highlighted};
       border: 1px solid #835afd;
 
       footer .user-info span {
-        color: #29292e;
+        color: ${(props) => props.theme.colors.text};
       }
     }
 
     &.answered {
-      background: #dbdcdd;
+      background: ${(props) => props.theme.colors.answered};
     }
 
     p {
@@ -102,5 +104,9 @@ export const Container = styled.div`
         }
       }
     }
+  }
+
+  & + div {
+    margin-top: 8px;
   }
 `;
