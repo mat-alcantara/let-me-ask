@@ -69,8 +69,8 @@ export const MainContent = styled.div`
       height: 50px;
       border-radius: 8px;
       padding: 0 16px;
-      background: #fff;
       border: 1px solid #a8a8b3;
+      color: ${(props) => props.theme.colors.text};
     }
 
     button {
