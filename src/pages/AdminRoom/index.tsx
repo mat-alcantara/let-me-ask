@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import deleteImg from '../../assets/delete.svg';
 import checkImg from '../../assets/check.svg';
@@ -19,19 +19,10 @@ type RoomParams = {
 };
 
 export const AdminRoom: React.FC = () => {
-  const history = useHistory();
   const params = useParams<RoomParams>();
   const roomId = params.id;
 
   const { title, questions, limitToCollapse } = useRoom(roomId);
-
-  async function handleEndRoom() {
-    await database.ref(`rooms/${roomId}`).update({
-      endedAt: new Date(),
-    });
-
-    history.push('/');
-  }
 
   async function handleDeleteQuestion(questionId: string) {
     // eslint-disable-next-line no-alert
@@ -55,7 +46,7 @@ export const AdminRoom: React.FC = () => {
   return (
     <Container>
       <header>
-        <Header handleEndRoom={handleEndRoom} isAdminPage roomId={roomId} />
+        <Header isAdminPage roomId={roomId} />
       </header>
 
       <main>

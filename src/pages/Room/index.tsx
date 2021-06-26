@@ -10,6 +10,7 @@ import { RoomCode } from '../../components/RoomCode';
 import { useAuth } from '../../hooks/useAuth';
 import { useRoom } from '../../hooks/useRoom';
 import { database } from '../../services/firebase';
+import Header from '../../components/Header';
 
 import { Container, Content, RoomTitle, FormFooter } from './styles';
 
@@ -100,10 +101,7 @@ export const Room: React.FC = () => {
   return (
     <Container>
       <header>
-        <Content>
-          <img src={logoImg} alt="Letmeask" />
-          <RoomCode code={roomId} />
-        </Content>
+        <Header roomId={roomId} />
       </header>
 
       <main>

@@ -5,7 +5,8 @@ export const Container = styled.button`
   border-radius: 8px;
   overflow: hidden;
 
-  background: #fff;
+  background: ${(props) => props.theme.colors.background};
+  color: ${(props) => props.theme.colors.text};
   border: 1px solid #835afd;
   cursor: pointer;
 
