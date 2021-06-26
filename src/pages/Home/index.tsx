@@ -3,6 +3,7 @@ import { ThemeContext } from 'styled-components';
 
 import { useHistory } from 'react-router-dom';
 
+import Switch from 'react-switch';
 import illustrationImg from '../../assets/illustration.svg';
 import logoImg from '../../assets/logo.svg';
 import darkLogo from '../../assets/dark-logo.svg';
@@ -10,6 +11,7 @@ import googleIconImg from '../../assets/google-icon.svg';
 
 import { Button } from '../../components/Button';
 import { useAuth } from '../../hooks/useAuth';
+import { useTheme } from '../../hooks/useTheme';
 
 import { Container, CreateRoom, MainContent, Separator } from './styles';
 
@@ -17,6 +19,7 @@ import { database } from '../../services/firebase';
 
 export const Home: React.FC = () => {
   const history = useHistory();
+  const { switchTheme, theme } = useTheme();
   const { user, signInWithGoogle } = useAuth();
 
   const { title } = useContext(ThemeContext);
@@ -77,6 +80,19 @@ export const Home: React.FC = () => {
             />
             <Button type="submit">Entrar na sala</Button>
           </form>
+          <div style={{ margin: '0 auto', marginTop: '32px' }}>
+            <Switch
+              onChange={switchTheme}
+              checked={theme.title === 'dark'}
+              checkedIcon={false}
+              uncheckedIcon={false}
+              height={20}
+              width={50}
+              handleDiameter={20}
+              offColor="#AAA"
+              onColor="#835afd"
+            />
+          </div>
         </MainContent>
       </main>
     </Container>

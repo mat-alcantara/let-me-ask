@@ -1,5 +1,6 @@
 import React, { FormEvent, useState, useContext } from 'react';
 import { ThemeContext } from 'styled-components';
+import Switch from 'react-switch';
 
 import { Link, useHistory } from 'react-router-dom';
 
@@ -12,12 +13,14 @@ import darkLogo from '../../assets/dark-logo.svg';
 import { Button } from '../../components/Button';
 
 import { useAuth } from '../../hooks/useAuth';
+import { useTheme } from '../../hooks/useTheme';
 
 import { Container, MainContent } from './styles';
 
 export const NewRoom: React.FC = () => {
   const { user } = useAuth();
   const { title } = useContext(ThemeContext);
+  const { switchTheme, theme } = useTheme();
   const history = useHistory();
 
   const [newRoom, setNewRoom] = useState('');
@@ -66,6 +69,19 @@ export const NewRoom: React.FC = () => {
           <p>
             Quer entrar em uma sala existente? <Link to="/">clique aqui</Link>
           </p>
+          <div style={{ margin: '0 auto', marginTop: '32px' }}>
+            <Switch
+              onChange={switchTheme}
+              checked={theme.title === 'dark'}
+              checkedIcon={false}
+              uncheckedIcon={false}
+              height={20}
+              width={50}
+              handleDiameter={20}
+              offColor="#AAA"
+              onColor="#835afd"
+            />
+          </div>
         </MainContent>
       </main>
     </Container>
