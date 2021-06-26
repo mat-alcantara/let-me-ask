@@ -4,7 +4,7 @@ export const Container = styled.div`
   @media (max-width: 480px) {
     padding-left: 16px;
     padding-right: 16px;
-    max-width: 480px;
+    max-width: 400px;
     margin: 0 auto;
   }
 
@@ -33,7 +33,7 @@ export const Container = styled.div`
 `;
 
 export const RoomTitle = styled.div`
-  margin: 32px 0 24px;
+  margin: 32px 0 24px 0;
   display: flex;
   align-items: center;
 
@@ -41,6 +41,11 @@ export const RoomTitle = styled.div`
     font-family: 'Poppins', sans-serif;
     font-size: 24px;
     color: ${(props) => props.theme.colors.text};
+
+    @media (max-width: 480px) {
+      max-width: 150px;
+      font-size: 12px;
+    }
   }
 
   span {

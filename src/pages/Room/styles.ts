@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  margin-bottom: 64px;
+
   @media (max-width: 480px) {
     padding-left: 16px;
     padding-right: 16px;
     max-width: 480px;
-    margin: 0 auto;
+    margin: 0 auto 32px auto;
   }
 
   header {
@@ -42,9 +44,14 @@ export const RoomTitle = styled.div`
     font-family: 'Poppins', sans-serif;
     font-size: 24px;
     color: ${(props) => props.theme.colors.text};
+
+    @media (max-width: 480px) {
+      font-size: 14px;
+    }
   }
 
   span {
+    text-align: center;
     margin-left: 16px;
     background: #e559f9;
     border-radius: 9999px;
@@ -52,6 +59,17 @@ export const RoomTitle = styled.div`
     color: ${(props) => props.theme.colors.text};
     font-weight: 500;
     font-size: 14px;
+
+    @media (max-width: 480px) {
+      margin-left: 4px;
+      font-size: 10px;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    width: 100%;
+    max-width: 350px;
   }
 `;
 
@@ -79,9 +97,6 @@ export const FormFooter = styled.div`
       color: ${(props) => props.theme.colors.text};
       font-weight: 500;
       font-size: 14px;
-      @media (max-width: 480px) {
-        max-width: 120px;
-      }
     }
   }
 
@@ -107,5 +122,14 @@ export const LiveContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+
+  iframe {
+    width: 100%;
+
+    @media (max-width: 480px) {
+      width: 100%;
+      max-width: 350px;
+      height: auto;
+    }
+  }
 `;

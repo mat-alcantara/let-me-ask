@@ -3,11 +3,19 @@ import styled from 'styled-components';
 export const Container = styled.div`
   background: ${(props) => props.theme.colors.background};
 
+  @media (max-width: 480px) {
+    max-width: 480px;
+  }
+
   .question {
     background: ${(props) => props.theme.colors.input};
     border-radius: 8px;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
     padding: 24px;
+
+    @media (max-width: 480px) {
+      max-width: 480px;
+    }
 
     span {
       margin: auto auto;
