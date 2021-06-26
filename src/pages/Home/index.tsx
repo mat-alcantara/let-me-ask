@@ -1,6 +1,8 @@
 import React, { FormEvent, useState, useContext } from 'react';
 import { ThemeContext } from 'styled-components';
 
+import toast, { Toaster } from 'react-hot-toast';
+
 import { useHistory } from 'react-router-dom';
 
 import Switch from 'react-switch';
@@ -21,6 +23,8 @@ export const Home: React.FC = () => {
   const history = useHistory();
   const { switchTheme, theme } = useTheme();
   const { user, signInWithGoogle } = useAuth();
+
+  const wrongRoomToast = () => toast.error('Esta sala não existe.');
 
   const { title } = useContext(ThemeContext);
 
@@ -44,8 +48,7 @@ export const Home: React.FC = () => {
     const roomRef = await database.ref(`rooms/${roomCode}`).get();
 
     if (!roomRef.exists()) {
-      // eslint-disable-next-line no-alert
-      alert('Room does not exists');
+      wrongRoomToast();
       return;
     }
 
@@ -95,6 +98,7 @@ export const Home: React.FC = () => {
           </div>
         </MainContent>
       </main>
+      <Toaster />
     </Container>
   );
 };

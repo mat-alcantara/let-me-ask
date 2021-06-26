@@ -35,9 +35,4 @@ export const Button = styled.button`
     opacity: 0.6;
     cursor: not-allowed;
   }
-
-  @media (max-width: 480px) {
-    height: 25px !important;
-    font-size: 12px;
-  }
 `;
