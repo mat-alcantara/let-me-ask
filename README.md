@@ -153,8 +153,3 @@ Please make sure to update tests as appropriate.
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
-
-https://www.youtube.com/watch?v=5qap5aO4i9A&ab_channel=LofiGirl
-https://youtu.be/5qap5aO4i9A
-
-<iframe width="560" height="315" src="https://www.youtube.com/watch?v=5qap5aO4i9A&ab_channel=LofiGirl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
