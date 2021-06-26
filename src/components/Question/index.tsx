@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 
 import cx from 'classnames';
 
-import './styles.scss';
+import { Container } from './styles';
 
 type QuestionProps = {
   content: string;
@@ -23,21 +23,23 @@ export const Question: React.FC<QuestionProps> = ({
   children,
 }) => {
   return (
-    <div
-      className={cx(
-        'question',
-        { answered: isAnswered },
-        { highlighted: isHighlighted && !isAnswered },
-      )}
-    >
-      <p>{content}</p>
-      <footer>
-        <div className="user-info">
-          <img src={author.avatar} alt={author.name} />
-          <span>{author.name}</span>
-        </div>
-        <div>{children}</div>
-      </footer>
-    </div>
+    <Container>
+      <div
+        className={cx(
+          'question',
+          { answered: isAnswered },
+          { highlighted: isHighlighted && !isAnswered },
+        )}
+      >
+        <p>{content}</p>
+        <footer>
+          <div className="user-info">
+            <img src={author.avatar} alt={author.name} />
+            <span>{author.name}</span>
+          </div>
+          <div>{children}</div>
+        </footer>
+      </div>
+    </Container>
   );
 };
