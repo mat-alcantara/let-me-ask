@@ -35,4 +35,11 @@ export const Menus = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  button {
+    @media (max-width: 480px) {
+      height: 25px !important;
+      font-size: 12px;
+    }
+  }
 `;

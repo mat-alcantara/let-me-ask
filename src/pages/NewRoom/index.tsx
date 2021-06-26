@@ -68,15 +68,15 @@ export const NewRoom: React.FC = () => {
             />
             <input
               type="text"
-              placeholder="Link da live"
+              placeholder="Link da live (opcional)"
               style={{ marginTop: '8px' }}
               onChange={(e) => setLiveLink(e.target.value)}
               value={liveLink}
             />
             <p style={{ fontSize: '12px' }}>
-              Observação: Link da live deve estar em formato iframe. Você pode
-              obter o link no botão compartilhar do Youtube, e logo em seguida
-              em incorporar.
+              Observação: Link da live deve estar em formato de tag iframe. Você
+              pode obter o link no botão compartilhar do Youtube, e logo em
+              seguida em incorporar.
             </p>
             <Button type="submit">Criar sala</Button>
           </form>
