@@ -68,7 +68,7 @@ export const NewRoom: React.FC = () => {
             />
             <input
               type="text"
-              placeholder="Link da live"
+              placeholder="Link da live (opcional)"
               style={{ marginTop: '8px' }}
               onChange={(e) => setLiveLink(e.target.value)}
               value={liveLink}
