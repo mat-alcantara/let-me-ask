@@ -1,6 +1,6 @@
 import React, { useCallback, useContext } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { ThemeContext } from 'styled-components';
-import { useHistory } from 'react-router-dom';
 
 import { FiLogOut } from 'react-icons/fi';
 
@@ -45,8 +45,16 @@ const Header: React.FC<HeaderProps> = ({ isAdminPage, roomId }) => {
 
   return (
     <Content>
-      {title === 'light' && <img src={logoImg} alt="Letmeask" />}
-      {title === 'dark' && <img src={darkLogoImg} alt="Letmeask" />}
+      {title === 'light' && (
+        <Link to="/">
+          <img src={logoImg} alt="Letmeask" />
+        </Link>
+      )}
+      {title === 'dark' && (
+        <Link to="/">
+          <img src={darkLogoImg} alt="Letmeask" />
+        </Link>
+      )}
       <div
         style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}
       >
