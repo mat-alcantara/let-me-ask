@@ -4,7 +4,7 @@
 ![Home Page Dark](./src/assets/web-home-dark.png)
 ![Mobile](./src/assets/mobile-views.png)
 
-Let me Ask is an App developed in Next Level Week Bootcamp by Rocketseat. I added some features to the original project like the use of styled-components, eslint, prettier and changed the structure of the Auth hook.
+Let me Ask is an App developed in Next Level Week Bootcamp by Rocketseat.
 
 # Build With
 
